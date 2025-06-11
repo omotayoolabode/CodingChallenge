@@ -1,14 +1,11 @@
 IF OBJECT_ID(N'[__EFMigrationsHistory]') IS NULL
 BEGIN
-CREATE TABLE [__EFMigrationsHistory] (
-    [MigrationId] nvarchar(150) NOT NULL,
-    [ProductVersion] nvarchar(32) NOT NULL,
-    CONSTRAINT [PK___EFMigrationsHistory] PRIMARY KEY ([MigrationId])
+    CREATE TABLE [__EFMigrationsHistory] (
+        [MigrationId] nvarchar(150) NOT NULL,
+        [ProductVersion] nvarchar(32) NOT NULL,
+        CONSTRAINT [PK___EFMigrationsHistory] PRIMARY KEY ([MigrationId])
     );
 END;
-GO
-
-BEGIN TRANSACTION;
 GO
 
 CREATE TABLE [AspNetRoles] (
@@ -17,7 +14,7 @@ CREATE TABLE [AspNetRoles] (
     [NormalizedName] nvarchar(256) NULL,
     [ConcurrencyStamp] nvarchar(max) NULL,
     CONSTRAINT [PK_AspNetRoles] PRIMARY KEY ([Id])
-    );
+);
 GO
 
 CREATE TABLE [AspNetUsers] (
@@ -39,7 +36,7 @@ CREATE TABLE [AspNetUsers] (
     [LockoutEnabled] bit NOT NULL,
     [AccessFailedCount] int NOT NULL,
     CONSTRAINT [PK_AspNetUsers] PRIMARY KEY ([Id])
-    );
+);
 GO
 
 CREATE TABLE [AspNetRoleClaims] (
@@ -49,7 +46,7 @@ CREATE TABLE [AspNetRoleClaims] (
     [ClaimValue] nvarchar(max) NULL,
     CONSTRAINT [PK_AspNetRoleClaims] PRIMARY KEY ([Id]),
     CONSTRAINT [FK_AspNetRoleClaims_AspNetRoles_RoleId] FOREIGN KEY ([RoleId]) REFERENCES [AspNetRoles] ([Id]) ON DELETE CASCADE
-    );
+);
 GO
 
 CREATE TABLE [AspNetUserClaims] (
@@ -59,7 +56,7 @@ CREATE TABLE [AspNetUserClaims] (
     [ClaimValue] nvarchar(max) NULL,
     CONSTRAINT [PK_AspNetUserClaims] PRIMARY KEY ([Id]),
     CONSTRAINT [FK_AspNetUserClaims_AspNetUsers_UserId] FOREIGN KEY ([UserId]) REFERENCES [AspNetUsers] ([Id]) ON DELETE CASCADE
-    );
+);
 GO
 
 CREATE TABLE [AspNetUserLogins] (
@@ -69,7 +66,7 @@ CREATE TABLE [AspNetUserLogins] (
     [UserId] nvarchar(450) NOT NULL,
     CONSTRAINT [PK_AspNetUserLogins] PRIMARY KEY ([LoginProvider], [ProviderKey]),
     CONSTRAINT [FK_AspNetUserLogins_AspNetUsers_UserId] FOREIGN KEY ([UserId]) REFERENCES [AspNetUsers] ([Id]) ON DELETE CASCADE
-    );
+);
 GO
 
 CREATE TABLE [AspNetUserRoles] (
@@ -78,7 +75,7 @@ CREATE TABLE [AspNetUserRoles] (
     CONSTRAINT [PK_AspNetUserRoles] PRIMARY KEY ([UserId], [RoleId]),
     CONSTRAINT [FK_AspNetUserRoles_AspNetRoles_RoleId] FOREIGN KEY ([RoleId]) REFERENCES [AspNetRoles] ([Id]) ON DELETE CASCADE,
     CONSTRAINT [FK_AspNetUserRoles_AspNetUsers_UserId] FOREIGN KEY ([UserId]) REFERENCES [AspNetUsers] ([Id]) ON DELETE CASCADE
-    );
+);
 GO
 
 CREATE TABLE [AspNetUserTokens] (
@@ -88,7 +85,7 @@ CREATE TABLE [AspNetUserTokens] (
     [Value] nvarchar(max) NULL,
     CONSTRAINT [PK_AspNetUserTokens] PRIMARY KEY ([UserId], [LoginProvider], [Name]),
     CONSTRAINT [FK_AspNetUserTokens_AspNetUsers_UserId] FOREIGN KEY ([UserId]) REFERENCES [AspNetUsers] ([Id]) ON DELETE CASCADE
-    );
+);
 GO
 
 CREATE INDEX [IX_AspNetRoleClaims_RoleId] ON [AspNetRoleClaims] ([RoleId]);
@@ -115,7 +112,3 @@ GO
 INSERT INTO [__EFMigrationsHistory] ([MigrationId], [ProductVersion])
 VALUES (N'20250611194628_Initial', N'8.0.17');
 GO
-
-COMMIT;
-GO
-

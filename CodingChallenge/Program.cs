@@ -1,9 +1,11 @@
+using System.Reflection;
 using System.Text;
 using CodingChallenge.Data;
 using CodingChallenge.Middleware;
 using CodingChallenge.Models.Entities;
 using CodingChallenge.Services;
 using CodingChallenge.Services.Interfaces;
+using DbUp;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
@@ -42,6 +44,16 @@ builder.Services.AddIdentity<User, IdentityRole>()
 // Configure JWT
 var jwtSettings = builder.Configuration.GetSection("Jwt");
 var key = Encoding.ASCII.GetBytes(jwtSettings["Key"] ?? throw new InvalidOperationException("JWT Key is not configured"));
+
+//Configure DbUP
+var connectionString = builder.Configuration.GetConnectionString("DefaultConnection");
+var upgrader =
+    DeployChanges.To
+        .SqlDatabase(connectionString)
+        .WithScriptsEmbeddedInAssembly(Assembly.GetExecutingAssembly())
+        .LogToConsole()
+        .Build();
+var result = upgrader.PerformUpgrade();
 
 builder.Services.AddAuthentication(options =>
 {
