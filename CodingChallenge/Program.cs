@@ -78,6 +78,8 @@ builder.Services.AddAuthentication(options =>
 
 // Register services
 builder.Services.AddScoped<IAuthService, AuthService>();
+builder.Services.AddScoped<IJourneyService, JourneyService>();
+builder.Services.AddMemoryCache();
 
 // Add Swagger
 builder.Services.AddEndpointsApiExplorer();
@@ -118,6 +120,14 @@ builder.Services.AddSwaggerGen(c =>
 
 var app = builder.Build();
 
+// Seed the database
+using (var scope = app.Services.CreateScope())
+{
+    var services = scope.ServiceProvider;
+    var context = services.GetRequiredService<AppDbContext>();
+    await DbSeeder.SeedAsync(context, services);
+}
+
 // Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())
 {
@@ -126,5 +136,19 @@ if (app.Environment.IsDevelopment())
 }
 
 app.UseHttpsRedirection();
+
+app.UseRouting();
+
+// Use CORS with the policy we defined
+app.UseCors("AllowAll");
+
+// Authentication & Authorization
+app.UseAuthentication();
+app.UseAuthorization();
+
+app.UseEndpoints(endpoints =>
+{
+    endpoints.MapControllers();
+});
 
 app.Run();
