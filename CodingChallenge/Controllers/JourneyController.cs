@@ -26,17 +26,21 @@ public class JourneyController : ControllerBase
     /// <param name="origin">The starting location (e.g., 'A').</param>
     /// <param name="destination">The target location (e.g., 'C').</param>
     /// <param name="order">Sort order: 'asc' (default) or 'desc'.</param>
+    /// <param name="maxExchanges">Maximum number of exchanges allowed in a journey (optional).</param>
+    /// <param name="maxResults">Maximum number of journeys to return (optional, default 100).</param>
     /// <returns>List of journeys.</returns>
     [HttpGet("min-exchanges")]
     public async Task<IActionResult> GetJourneysByMinExchanges([
         FromQuery] string origin,
         [FromQuery] string destination,
-        [FromQuery] string order = "asc")
+        [FromQuery] string order = "asc",
+        [FromQuery] int? maxExchanges = null,
+        [FromQuery] int maxResults = 100)
     {
         if (string.IsNullOrWhiteSpace(origin) || string.IsNullOrWhiteSpace(destination))
             return BadRequest(new { message = "Origin and destination are required." });
         bool ascending = order.ToLower() != "desc";
-        var journeys = await _journeyService.FindJourneysByMinExchangesAsync(origin, destination, ascending);
+        var journeys = await _journeyService.FindJourneysByMinExchangesAsync(origin, destination, ascending, maxExchanges, maxResults);
         if (journeys == null || journeys.Count == 0)
             return NotFound(new { message = "No journey exists between the specified locations." });
         // Optionally, map to a DTO for cleaner output
