@@ -9,13 +9,10 @@ public class AppDbContext : IdentityDbContext<User>
     public AppDbContext(DbContextOptions<AppDbContext> options) : base(options)
     {
     }
+    
 
-    protected override void OnModelCreating(ModelBuilder builder)
-    {
-        base.OnModelCreating(builder);
-        
-        // Add your entity configurations here
-        // Example:
-        // builder.Entity<YourEntity>().HasKey(x => x.Id);
-    }
+    public DbSet<Flight> Flights { get; set; }
+    public DbSet<Journey> Journeys { get; set; }
+    public DbSet<JourneyFlight> JourneyFlights { get; set; }
+    public DbSet<CodingChallenge.Models.Entities.Route> Routes { get; set; }
 }
