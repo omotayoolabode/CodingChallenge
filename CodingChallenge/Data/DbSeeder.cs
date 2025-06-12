@@ -37,7 +37,6 @@ public static class DbSeeder
             {
                 var flightEntities = flights.Select(f => new Flight
                 {
-                    FlightId = f.flight_id,
                     RouteId = f.route,
                     Provider = f.provider,
                     Price = f.price,

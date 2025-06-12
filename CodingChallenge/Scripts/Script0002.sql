@@ -1,6 +1,3 @@
-BEGIN TRANSACTION;
-GO
-
 CREATE TABLE [Journeys] (
     [JourneyId] int NOT NULL IDENTITY,
     [Origin] nvarchar(1) NOT NULL,
@@ -52,8 +49,5 @@ GO
 
 INSERT INTO [__EFMigrationsHistory] ([MigrationId], [ProductVersion])
 VALUES (N'20250612193911_AddedRouteAndFlightData', N'8.0.17');
-GO
-
-COMMIT;
 GO
 
