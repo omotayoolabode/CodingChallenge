@@ -94,23 +94,5 @@ public class AuthController : ControllerBase
         }
     }
 
-    /// <summary>
-    /// Logs out the currently authenticated user
-    /// </summary>
-    /// <remarks>
-    /// Requires authentication via JWT token in the Authorization header
-    /// </remarks>
-    /// <returns>Success message</returns>
-    /// <response code="200">User logged out successfully</response>
-    /// <response code="401">If user is not authenticated</response>
-    [Authorize]
-    [HttpPost("logout")]
-    [ProducesResponseType(StatusCodes.Status200OK, Type = typeof(object))]
-    [ProducesResponseType(StatusCodes.Status401Unauthorized)]
-    public async Task<IActionResult> Logout()
-    {
-        await _authService.LogoutAsync();
-        _logger.LogInformation("User logged out");
-        return Ok(new { message = "Logged out successfully" });
-    }
+
 }

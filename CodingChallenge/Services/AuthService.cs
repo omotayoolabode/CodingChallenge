@@ -50,12 +50,6 @@ public class AuthService : IAuthService
         return await GenerateJwtToken(user);
     }
 
-    public Task LogoutAsync()
-    {
-        // In a real app, you might want to implement token invalidation here
-        return Task.CompletedTask;
-    }
-
     private async Task<AuthResponse> GenerateJwtToken(User user)
     {
         var key = new SymmetricSecurityKey(
@@ -82,7 +76,6 @@ public class AuthService : IAuthService
             expires: expires,
             signingCredentials: credentials
         );
-
         return new AuthResponse
         {
             Token = new JwtSecurityTokenHandler().WriteToken(token),
