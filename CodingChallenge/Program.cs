@@ -79,6 +79,7 @@ builder.Services.AddAuthentication(options =>
 // Register services
 builder.Services.AddScoped<IAuthService, AuthService>();
 builder.Services.AddScoped<IJourneyService, JourneyService>();
+builder.Services.AddMemoryCache();
 
 // Add Swagger
 builder.Services.AddEndpointsApiExplorer();

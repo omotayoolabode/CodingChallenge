@@ -2,31 +2,39 @@ using CodingChallenge.Data;
 using CodingChallenge.Models.Entities;
 using CodingChallenge.Services.Interfaces;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Caching.Memory;
 
 namespace CodingChallenge.Services;
 
 public class JourneyService : IJourneyService
 {
     private readonly AppDbContext _context;
+    private readonly IMemoryCache _cache;
+    
+    private const string ROUTES_CACHE_KEY = "routes";
+    private const string FLIGHTS_CACHE_KEY = "flights";
 
-    // Simple static cache for demonstration (not thread-safe for production)
-    private static List<CodingChallenge.Models.Entities.Route>? cachedRoutes = null;
-    private static List<Flight>? cachedFlights = null;
-
-    public JourneyService(AppDbContext context)
+    public JourneyService(AppDbContext context, IMemoryCache cache)
     {
         _context = context;
+        _cache = cache;
     }
 
     public async Task<List<Journey>> FindJourneysByMinExchangesAsync(string origin, string destination, bool ascending = true, int? maxExchanges = null, int maxResults = 100)
     {
-        if (cachedRoutes == null || cachedFlights == null)
+        // Get routes from cache or load from database
+        var routes = await _cache.GetOrCreateAsync(ROUTES_CACHE_KEY, async entry =>
         {
-            cachedRoutes = await _context.Routes.Include(r => r.Flights).ToListAsync();
-            cachedFlights = await _context.Flights.Include(f => f.Route).ToListAsync();
-        }
-        var routes = cachedRoutes;
-        var flights = cachedFlights;
+            entry.SlidingExpiration = TimeSpan.FromMinutes(30);
+            return await _context.Routes.Include(r => r.Flights).ToListAsync();
+        });
+
+        // Get flights from cache or load from database
+        var flights = await _cache.GetOrCreateAsync(FLIGHTS_CACHE_KEY, async entry =>
+        {
+            entry.SlidingExpiration = TimeSpan.FromMinutes(30);
+            return await _context.Flights.Include(f => f.Route).ToListAsync();
+        });
 
         // Build a map from location to available flights
         var flightsFrom = flights.GroupBy(f => f.Route.From)
