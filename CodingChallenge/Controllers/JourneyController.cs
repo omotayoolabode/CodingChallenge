@@ -47,7 +47,7 @@ public class JourneyController : ControllerBase
         return Ok(journeys.Select(j => new {
             origin = j.Origin,
             destination = j.Destination,
-            departure = j.DepartureTime,
+            departure = j.DepartureTime.HasValue ? FormatDepartureTime(j.DepartureTime.Value) : "unknown",
             exchanges = j.NumberOfExchanges,
             flights = j.JourneyFlights.Select(jf => new {
                 flight_id = jf.FlightId,
@@ -91,7 +91,7 @@ public class JourneyController : ControllerBase
         return Ok(journeys.Select(j => new {
             origin = j.Origin,
             destination = j.Destination,
-            departure = j.DepartureTime,
+            departure = j.DepartureTime.HasValue ? FormatDepartureTime(j.DepartureTime.Value) : "unknown",
             totalPrice = j.TotalPrice,
             exchanges = j.NumberOfExchanges,
             flights = j.JourneyFlights.Select(jf => new {
@@ -103,5 +103,32 @@ public class JourneyController : ControllerBase
                 departure = jf.Flight.Departure
             })
         }));
+    }
+
+    private string FormatDepartureTime(DateTime departureTime)
+    {
+        var now = DateTime.UtcNow;
+        var timeDifference = departureTime - now;
+        
+        if (timeDifference.TotalHours < 1)
+        {
+            return "now";
+        }
+        
+        var days = (int)timeDifference.TotalDays;
+        var hours = timeDifference.Hours;
+        
+        if (days > 0 && hours > 0)
+        {
+            return $"+{days} day {hours} hour";
+        }
+        else if (days > 0)
+        {
+            return $"+{days} day";
+        }
+        else
+        {
+            return $"+{hours} hour";
+        }
     }
 } 
