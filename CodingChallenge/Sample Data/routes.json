@@ -1,0 +1,578 @@
+[
+    {
+      "route_id": "A_D",
+      "from": "A",
+      "to": "D",
+      "duration": 4
+    },
+    {
+      "route_id": "A_E",
+      "from": "A",
+      "to": "E",
+      "duration": 4
+    },
+    {
+      "route_id": "A_F",
+      "from": "A",
+      "to": "F",
+      "duration": 8
+    },
+    {
+      "route_id": "A_G",
+      "from": "A",
+      "to": "G",
+      "duration": 5
+    },
+    {
+      "route_id": "A_H",
+      "from": "A",
+      "to": "H",
+      "duration": 10
+    },
+    {
+      "route_id": "A_I",
+      "from": "A",
+      "to": "I",
+      "duration": 11
+    },
+    {
+      "route_id": "A_K",
+      "from": "A",
+      "to": "K",
+      "duration": 6
+    },
+    {
+      "route_id": "A_L",
+      "from": "A",
+      "to": "L",
+      "duration": 2
+    },
+    {
+      "route_id": "B_A",
+      "from": "B",
+      "to": "A",
+      "duration": 4
+    },
+    {
+      "route_id": "B_C",
+      "from": "B",
+      "to": "C",
+      "duration": 9
+    },
+    {
+      "route_id": "B_D",
+      "from": "B",
+      "to": "D",
+      "duration": 1
+    },
+    {
+      "route_id": "B_E",
+      "from": "B",
+      "to": "E",
+      "duration": 8
+    },
+    {
+      "route_id": "B_F",
+      "from": "B",
+      "to": "F",
+      "duration": 11
+    },
+    {
+      "route_id": "B_H",
+      "from": "B",
+      "to": "H",
+      "duration": 8
+    },
+    {
+      "route_id": "B_J",
+      "from": "B",
+      "to": "J",
+      "duration": 10
+    },
+    {
+      "route_id": "B_K",
+      "from": "B",
+      "to": "K",
+      "duration": 3
+    },
+    {
+      "route_id": "C_A",
+      "from": "C",
+      "to": "A",
+      "duration": 9
+    },
+    {
+      "route_id": "C_E",
+      "from": "C",
+      "to": "E",
+      "duration": 12
+    },
+    {
+      "route_id": "C_F",
+      "from": "C",
+      "to": "F",
+      "duration": 2
+    },
+    {
+      "route_id": "C_G",
+      "from": "C",
+      "to": "G",
+      "duration": 6
+    },
+    {
+      "route_id": "C_H",
+      "from": "C",
+      "to": "H",
+      "duration": 12
+    },
+    {
+      "route_id": "C_I",
+      "from": "C",
+      "to": "I",
+      "duration": 5
+    },
+    {
+      "route_id": "C_J",
+      "from": "C",
+      "to": "J",
+      "duration": 11
+    },
+    {
+      "route_id": "C_L",
+      "from": "C",
+      "to": "L",
+      "duration": 4
+    },
+    {
+      "route_id": "D_A",
+      "from": "D",
+      "to": "A",
+      "duration": 3
+    },
+    {
+      "route_id": "D_E",
+      "from": "D",
+      "to": "E",
+      "duration": 7
+    },
+    {
+      "route_id": "D_F",
+      "from": "D",
+      "to": "F",
+      "duration": 6
+    },
+    {
+      "route_id": "D_G",
+      "from": "D",
+      "to": "G",
+      "duration": 12
+    },
+    {
+      "route_id": "D_I",
+      "from": "D",
+      "to": "I",
+      "duration": 6
+    },
+    {
+      "route_id": "D_J",
+      "from": "D",
+      "to": "J",
+      "duration": 9
+    },
+    {
+      "route_id": "D_K",
+      "from": "D",
+      "to": "K",
+      "duration": 3
+    },
+    {
+      "route_id": "D_L",
+      "from": "D",
+      "to": "L",
+      "duration": 10
+    },
+    {
+      "route_id": "E_A",
+      "from": "E",
+      "to": "A",
+      "duration": 5
+    },
+    {
+      "route_id": "E_C",
+      "from": "E",
+      "to": "C",
+      "duration": 8
+    },
+    {
+      "route_id": "E_D",
+      "from": "E",
+      "to": "D",
+      "duration": 12
+    },
+    {
+      "route_id": "E_F",
+      "from": "E",
+      "to": "F",
+      "duration": 12
+    },
+    {
+      "route_id": "E_G",
+      "from": "E",
+      "to": "G",
+      "duration": 3
+    },
+    {
+      "route_id": "E_H",
+      "from": "E",
+      "to": "H",
+      "duration": 6
+    },
+    {
+      "route_id": "E_I",
+      "from": "E",
+      "to": "I",
+      "duration": 2
+    },
+    {
+      "route_id": "E_J",
+      "from": "E",
+      "to": "J",
+      "duration": 10
+    },
+    {
+      "route_id": "F_B",
+      "from": "F",
+      "to": "B",
+      "duration": 4
+    },
+    {
+      "route_id": "F_C",
+      "from": "F",
+      "to": "C",
+      "duration": 1
+    },
+    {
+      "route_id": "F_D",
+      "from": "F",
+      "to": "D",
+      "duration": 3
+    },
+    {
+      "route_id": "F_E",
+      "from": "F",
+      "to": "E",
+      "duration": 1
+    },
+    {
+      "route_id": "F_G",
+      "from": "F",
+      "to": "G",
+      "duration": 10
+    },
+    {
+      "route_id": "F_H",
+      "from": "F",
+      "to": "H",
+      "duration": 11
+    },
+    {
+      "route_id": "F_J",
+      "from": "F",
+      "to": "J",
+      "duration": 12
+    },
+    {
+      "route_id": "F_K",
+      "from": "F",
+      "to": "K",
+      "duration": 1
+    },
+    {
+      "route_id": "G_A",
+      "from": "G",
+      "to": "A",
+      "duration": 5
+    },
+    {
+      "route_id": "G_C",
+      "from": "G",
+      "to": "C",
+      "duration": 11
+    },
+    {
+      "route_id": "G_D",
+      "from": "G",
+      "to": "D",
+      "duration": 1
+    },
+    {
+      "route_id": "G_E",
+      "from": "G",
+      "to": "E",
+      "duration": 8
+    },
+    {
+      "route_id": "G_F",
+      "from": "G",
+      "to": "F",
+      "duration": 9
+    },
+    {
+      "route_id": "G_H",
+      "from": "G",
+      "to": "H",
+      "duration": 10
+    },
+    {
+      "route_id": "G_J",
+      "from": "G",
+      "to": "J",
+      "duration": 10
+    },
+    {
+      "route_id": "G_L",
+      "from": "G",
+      "to": "L",
+      "duration": 10
+    },
+    {
+      "route_id": "H_C",
+      "from": "H",
+      "to": "C",
+      "duration": 6
+    },
+    {
+      "route_id": "H_D",
+      "from": "H",
+      "to": "D",
+      "duration": 1
+    },
+    {
+      "route_id": "H_E",
+      "from": "H",
+      "to": "E",
+      "duration": 8
+    },
+    {
+      "route_id": "H_G",
+      "from": "H",
+      "to": "G",
+      "duration": 3
+    },
+    {
+      "route_id": "H_I",
+      "from": "H",
+      "to": "I",
+      "duration": 12
+    },
+    {
+      "route_id": "H_J",
+      "from": "H",
+      "to": "J",
+      "duration": 8
+    },
+    {
+      "route_id": "H_K",
+      "from": "H",
+      "to": "K",
+      "duration": 5
+    },
+    {
+      "route_id": "H_L",
+      "from": "H",
+      "to": "L",
+      "duration": 1
+    },
+    {
+      "route_id": "I_A",
+      "from": "I",
+      "to": "A",
+      "duration": 10
+    },
+    {
+      "route_id": "I_B",
+      "from": "I",
+      "to": "B",
+      "duration": 3
+    },
+    {
+      "route_id": "I_C",
+      "from": "I",
+      "to": "C",
+      "duration": 5
+    },
+    {
+      "route_id": "I_D",
+      "from": "I",
+      "to": "D",
+      "duration": 2
+    },
+    {
+      "route_id": "I_E",
+      "from": "I",
+      "to": "E",
+      "duration": 3
+    },
+    {
+      "route_id": "I_G",
+      "from": "I",
+      "to": "G",
+      "duration": 1
+    },
+    {
+      "route_id": "I_J",
+      "from": "I",
+      "to": "J",
+      "duration": 6
+    },
+    {
+      "route_id": "I_K",
+      "from": "I",
+      "to": "K",
+      "duration": 8
+    },
+    {
+      "route_id": "J_A",
+      "from": "J",
+      "to": "A",
+      "duration": 5
+    },
+    {
+      "route_id": "J_D",
+      "from": "J",
+      "to": "D",
+      "duration": 8
+    },
+    {
+      "route_id": "J_E",
+      "from": "J",
+      "to": "E",
+      "duration": 2
+    },
+    {
+      "route_id": "J_F",
+      "from": "J",
+      "to": "F",
+      "duration": 5
+    },
+    {
+      "route_id": "J_H",
+      "from": "J",
+      "to": "H",
+      "duration": 8
+    },
+    {
+      "route_id": "J_I",
+      "from": "J",
+      "to": "I",
+      "duration": 9
+    },
+    {
+      "route_id": "J_K",
+      "from": "J",
+      "to": "K",
+      "duration": 10
+    },
+    {
+      "route_id": "J_L",
+      "from": "J",
+      "to": "L",
+      "duration": 5
+    },
+    {
+      "route_id": "K_C",
+      "from": "K",
+      "to": "C",
+      "duration": 8
+    },
+    {
+      "route_id": "K_D",
+      "from": "K",
+      "to": "D",
+      "duration": 11
+    },
+    {
+      "route_id": "K_F",
+      "from": "K",
+      "to": "F",
+      "duration": 3
+    },
+    {
+      "route_id": "K_G",
+      "from": "K",
+      "to": "G",
+      "duration": 11
+    },
+    {
+      "route_id": "K_H",
+      "from": "K",
+      "to": "H",
+      "duration": 10
+    },
+    {
+      "route_id": "K_I",
+      "from": "K",
+      "to": "I",
+      "duration": 9
+    },
+    {
+      "route_id": "K_J",
+      "from": "K",
+      "to": "J",
+      "duration": 11
+    },
+    {
+      "route_id": "K_L",
+      "from": "K",
+      "to": "L",
+      "duration": 1
+    },
+    {
+      "route_id": "L_A",
+      "from": "L",
+      "to": "A",
+      "duration": 9
+    },
+    {
+      "route_id": "L_B",
+      "from": "L",
+      "to": "B",
+      "duration": 1
+    },
+    {
+      "route_id": "L_C",
+      "from": "L",
+      "to": "C",
+      "duration": 10
+    },
+    {
+      "route_id": "L_D",
+      "from": "L",
+      "to": "D",
+      "duration": 2
+    },
+    {
+      "route_id": "L_G",
+      "from": "L",
+      "to": "G",
+      "duration": 12
+    },
+    {
+      "route_id": "L_H",
+      "from": "L",
+      "to": "H",
+      "duration": 3
+    },
+    {
+      "route_id": "L_J",
+      "from": "L",
+      "to": "J",
+      "duration": 1
+    },
+    {
+      "route_id": "L_K",
+      "from": "L",
+      "to": "K",
+      "duration": 1
+    }
+  ]

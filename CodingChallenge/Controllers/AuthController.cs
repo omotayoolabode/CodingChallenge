@@ -93,6 +93,4 @@ public class AuthController : ControllerBase
             return Unauthorized(new { message = "Invalid email or password" });
         }
     }
-
-
 }
