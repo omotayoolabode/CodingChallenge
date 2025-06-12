@@ -22,6 +22,112 @@ namespace CodingChallenge.Migrations
 
             SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder);
 
+            modelBuilder.Entity("CodingChallenge.Models.Entities.Flight", b =>
+                {
+                    b.Property<int>("FlightId")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("FlightId"));
+
+                    b.Property<DateTime>("Departure")
+                        .HasColumnType("datetime2");
+
+                    b.Property<decimal>("Price")
+                        .HasColumnType("decimal(18,2)");
+
+                    b.Property<string>("Provider")
+                        .IsRequired()
+                        .HasMaxLength(100)
+                        .HasColumnType("nvarchar(100)");
+
+                    b.Property<string>("RouteId")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(50)");
+
+                    b.HasKey("FlightId");
+
+                    b.HasIndex("RouteId");
+
+                    b.ToTable("Flights");
+                });
+
+            modelBuilder.Entity("CodingChallenge.Models.Entities.Journey", b =>
+                {
+                    b.Property<int>("JourneyId")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("JourneyId"));
+
+                    b.Property<DateTime?>("DepartureTime")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("Destination")
+                        .IsRequired()
+                        .HasMaxLength(1)
+                        .HasColumnType("nvarchar(1)");
+
+                    b.Property<string>("Origin")
+                        .IsRequired()
+                        .HasMaxLength(1)
+                        .HasColumnType("nvarchar(1)");
+
+                    b.HasKey("JourneyId");
+
+                    b.ToTable("Journeys");
+                });
+
+            modelBuilder.Entity("CodingChallenge.Models.Entities.JourneyFlight", b =>
+                {
+                    b.Property<int>("JourneyFlightId")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("JourneyFlightId"));
+
+                    b.Property<int>("FlightId")
+                        .HasColumnType("int");
+
+                    b.Property<int>("JourneyId")
+                        .HasColumnType("int");
+
+                    b.Property<int>("Sequence")
+                        .HasColumnType("int");
+
+                    b.HasKey("JourneyFlightId");
+
+                    b.HasIndex("FlightId");
+
+                    b.HasIndex("JourneyId");
+
+                    b.ToTable("JourneyFlights");
+                });
+
+            modelBuilder.Entity("CodingChallenge.Models.Entities.Route", b =>
+                {
+                    b.Property<string>("RouteId")
+                        .HasMaxLength(50)
+                        .HasColumnType("nvarchar(50)");
+
+                    b.Property<int>("Duration")
+                        .HasColumnType("int");
+
+                    b.Property<string>("From")
+                        .IsRequired()
+                        .HasMaxLength(1)
+                        .HasColumnType("nvarchar(1)");
+
+                    b.Property<string>("To")
+                        .IsRequired()
+                        .HasMaxLength(1)
+                        .HasColumnType("nvarchar(1)");
+
+                    b.HasKey("RouteId");
+
+                    b.ToTable("Routes");
+                });
+
             modelBuilder.Entity("CodingChallenge.Models.Entities.User", b =>
                 {
                     b.Property<string>("Id")
@@ -228,6 +334,36 @@ namespace CodingChallenge.Migrations
                     b.ToTable("AspNetUserTokens", (string)null);
                 });
 
+            modelBuilder.Entity("CodingChallenge.Models.Entities.Flight", b =>
+                {
+                    b.HasOne("CodingChallenge.Models.Entities.Route", "Route")
+                        .WithMany("Flights")
+                        .HasForeignKey("RouteId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Route");
+                });
+
+            modelBuilder.Entity("CodingChallenge.Models.Entities.JourneyFlight", b =>
+                {
+                    b.HasOne("CodingChallenge.Models.Entities.Flight", "Flight")
+                        .WithMany("JourneyFlights")
+                        .HasForeignKey("FlightId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("CodingChallenge.Models.Entities.Journey", "Journey")
+                        .WithMany("JourneyFlights")
+                        .HasForeignKey("JourneyId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Flight");
+
+                    b.Navigation("Journey");
+                });
+
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<string>", b =>
                 {
                     b.HasOne("Microsoft.AspNetCore.Identity.IdentityRole", null)
@@ -277,6 +413,21 @@ namespace CodingChallenge.Migrations
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
+                });
+
+            modelBuilder.Entity("CodingChallenge.Models.Entities.Flight", b =>
+                {
+                    b.Navigation("JourneyFlights");
+                });
+
+            modelBuilder.Entity("CodingChallenge.Models.Entities.Journey", b =>
+                {
+                    b.Navigation("JourneyFlights");
+                });
+
+            modelBuilder.Entity("CodingChallenge.Models.Entities.Route", b =>
+                {
+                    b.Navigation("Flights");
                 });
 #pragma warning restore 612, 618
         }
